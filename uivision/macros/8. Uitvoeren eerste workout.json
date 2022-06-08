@@ -1,0 +1,108 @@
+{
+  "Name": "9 Uitvoeren eerste workout",
+  "CreationDate": "2022-6-8",
+  "Commands": [
+    {
+      "Command": "echo",
+      "Target": "BEWEEG DE MUIS NIET!",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "css=button.ls-start-workout",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "2",
+      "Value": "!timeout_wait",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "css=button.ls-close-help-overlay[kind=\"green\"]",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript",
+      "Target": "return document.querySelectorAll(\"button[data-cy='set-nonstarted']\").length;",
+      "Value": "setCount",
+      "Description": ""
+    },
+    {
+      "Command": "times",
+      "Target": "${setCount}",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "true",
+      "Value": "!statusOK",
+      "Description": ""
+    },
+    {
+      "Command": "verifyElementPresent",
+      "Target": "css=button.ls-close-help-overlay[kind=\"green\"]",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "if_v2",
+      "Target": "${!statusOK} == true",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "css=button.ls-close-help-overlay[kind=\"green\"]",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "else",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "css=button[data-cy=\"set-nonstarted\"]",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "10",
+      "Value": "!timeout_wait",
+      "Description": ""
+    },
+    {
+      "Command": "XClick",
+      "Target": "css=button.ls-finish-workout",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "visualVerify",
+      "Target": "personalrecords_dpi_96.png",
+      "Value": "",
+      "Description": ""
+    }
+  ]
+}

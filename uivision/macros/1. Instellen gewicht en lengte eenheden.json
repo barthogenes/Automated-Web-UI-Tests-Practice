@@ -1,0 +1,60 @@
+{
+  "Name": "1. setup",
+  "CreationDate": "2022-6-2",
+  "Commands": [
+    {
+      "Command": "open",
+      "Target": "https://www.liftosaur.com/",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript",
+      "Target": "indexedDB.deleteDatabase(\"keyval-store\");",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "refresh",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "verifyTitle",
+      "Target": "Liftosaur: Weight Lifting Tracking App",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "css=button[data-cy=\"modal-close\"]",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "css=button[data-cy=\"footer-settings\"]",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "select",
+      "Target": "css=select[data-cy=\"menu-item-value-weight-units\"]",
+      "Value": "label=kg",
+      "Description": ""
+    },
+    {
+      "Command": "select",
+      "Target": "css=select[data-cy=\"menu-item-value-length-units\"]",
+      "Value": "label=cm",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "css=button[data-cy=\"back\"]",
+      "Value": "",
+      "Description": ""
+    }
+  ]
+}

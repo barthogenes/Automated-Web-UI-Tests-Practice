@@ -1,0 +1,72 @@
+{
+  "Name": "2. Check template programma namen",
+  "CreationDate": "2022-6-8",
+  "Commands": [
+    {
+      "Command": "comment",
+      "Target": "csvRead // programs.csv",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "while_v2 // ${!csvReadStatus} == \"OK\"",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "executeScript_Sandbox // return Number(${!csvReadLineNumber})+1",
+      "Value": "!csvReadLineNumber",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "executeScript_Sandbox // return Number(${!csvReadLineNumber})+1;",
+      "Value": "buttonNum",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "echo // Controleren of het programma ${!COL1} in de lijst staat",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "assertText // css=#app > section > section:nth-child(2) > button:nth-child(${buttonNum}) > span",
+      "Value": "${!COL1}",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "store // true",
+      "Value": "!errorIgnore",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "csvRead // programs.csv",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "store // false",
+      "Value": "!errorIgnore",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "end // ",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "executeScript_Sandbox // return 1;",
+      "Value": "!csvReadLineNumber",
+      "Description": ""
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "Name": "5. Instellen trainingsdagen",
+  "CreationDate": "2022-6-8",
+  "Commands": [
+    {
+      "Command": "echo",
+      "Target": "BEWEEG DE MUIS NIET!",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "NOTE: Ik gebruik hier een andere manier om over de csv data te itereren omdat ik deze manier compacter/duidelijker vind",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "css=button[data-cy=\"edit-day\"]",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "csvReadArray",
+      "Target": "exercises-day1.csv",
+      "Value": "exercises",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return ${exercises}.length;",
+      "Value": "numExercises",
+      "Description": ""
+    },
+    {
+      "Command": "times",
+      "Target": "${numExercises}",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return ${exercises}[${!times} - 1];",
+      "Value": "exercise",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "css=section[data-cy=\"menu-item-${exercise}\"]",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "visualVerify",
+      "Target": "day1_dpi_96.png",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "css=button",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "visualVerify",
+      "Target": "days_dpi_96.png",
+      "Value": "",
+      "Description": ""
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "Name": "3. Aanmaken programma",
+  "CreationDate": "2022-6-8",
+  "Commands": [
+    {
+      "Command": "echo",
+      "Target": "BEWEEG DE MUIS NIET!",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "XClick",
+      "Target": "css=button.ls-open-create-new-program-modal",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "XType",
+      "Target": "Test Program",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "css=button[data-cy=\"modal-create-program-submit\"]",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "visualVerify",
+      "Target": "editprogram_dpi_96.png",
+      "Value": "",
+      "Description": ""
+    }
+  ]
+}

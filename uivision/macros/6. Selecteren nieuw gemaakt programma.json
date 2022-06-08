@@ -1,0 +1,36 @@
+{
+  "Name": "7. Go back and select newly created program",
+  "CreationDate": "2022-6-8",
+  "Commands": [
+    {
+      "Command": "click",
+      "Target": "css=button",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "css=section[data-cy=\"menu-item-test-program\"]",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "visualVerify",
+      "Target": "program_part1_dpi_96.png",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "visualVerify",
+      "Target": "program_part2_dpi_96.png",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "visualVerify",
+      "Target": "program_part3_dpi_96.png",
+      "Value": "",
+      "Description": ""
+    }
+  ]
+}
