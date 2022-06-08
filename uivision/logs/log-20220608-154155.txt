@@ -1,0 +1,314 @@
+2022-06-08T13:41:55.198Z - UI.Vision RPA started
+2022-06-08T13:41:56.931Z - [status] Playing test suite macros
+2022-06-08T13:41:57.013Z - [status] Playing macro 1. Instellen gewicht en lengte eenheden
+2022-06-08T13:41:57.037Z - [info] Executing:  | open | https://www.liftosaur.com/ |  | 
+2022-06-08T13:42:00.027Z - [info] Executing:  | executeScript | indexedDB.deleteDatabase("keyval-store"); |  | 
+2022-06-08T13:42:00.914Z - [info] Executing:  | refresh |  |  | 
+2022-06-08T13:42:03.299Z - [info] Executing:  | verifyTitle | Liftosaur: Weight Lifting Tracking App |  | 
+2022-06-08T13:42:03.648Z - [info] Executing:  | click | css=button[data-cy="modal-close"] |  | 
+2022-06-08T13:42:04.508Z - [info] Executing:  | click | css=button[data-cy="footer-settings"] |  | 
+2022-06-08T13:42:05.365Z - [info] Executing:  | select | css=select[data-cy="menu-item-value-weight-units"] | label=kg | 
+2022-06-08T13:42:05.723Z - [info] Executing:  | select | css=select[data-cy="menu-item-value-length-units"] | label=cm | 
+2022-06-08T13:42:06.101Z - [info] Executing:  | click | css=button[data-cy="back"] |  | 
+2022-06-08T13:42:07.019Z - [info] Macro completed (Runtime 9.99s)
+2022-06-08T13:42:07.105Z - [status] Playing macro 2. Check template programma namen
+2022-06-08T13:42:07.130Z - [info] Executing:  | comment | csvRead // programs.csv |  | 
+2022-06-08T13:42:07.450Z - [info] Executing:  | comment | while_v2 // ${!csvReadStatus} == "OK" |  | 
+2022-06-08T13:42:07.764Z - [info] Executing:  | comment | executeScript_Sandbox // return Number(${!csvReadLineNumber})+1 | !csvReadLineNumber | 
+2022-06-08T13:42:08.078Z - [info] Executing:  | comment | executeScript_Sandbox // return Number(${!csvReadLineNumber})+1; | buttonNum | 
+2022-06-08T13:42:08.391Z - [info] Executing:  | comment | echo // Controleren of het programma ${!COL1} in de lijst staat |  | 
+2022-06-08T13:42:08.704Z - [info] Executing:  | comment | assertText // css=#app > section > section:nth-child(2) > button:nth-child(${buttonNum}) > span | ${!COL1} | 
+2022-06-08T13:42:09.027Z - [info] Executing:  | comment | store // true | !errorIgnore | 
+2022-06-08T13:42:09.351Z - [info] Executing:  | comment | csvRead // programs.csv |  | 
+2022-06-08T13:42:09.678Z - [info] Executing:  | comment | store // false | !errorIgnore | 
+2022-06-08T13:42:09.992Z - [info] Executing:  | comment | end //  |  | 
+2022-06-08T13:42:10.304Z - [info] Executing:  | comment | executeScript_Sandbox // return 1; | !csvReadLineNumber | 
+2022-06-08T13:42:10.629Z - [info] Macro completed (Runtime 3.50s)
+2022-06-08T13:42:10.703Z - [status] Playing macro 3. Aanmaken programma
+2022-06-08T13:42:10.726Z - [info] Executing:  | echo | BEWEEG DE MUIS NIET! |  | 
+2022-06-08T13:42:10.733Z - [echo] BEWEEG DE MUIS NIET!
+2022-06-08T13:42:11.056Z - [info] Executing:  | XClick | css=button.ls-open-create-new-program-modal |  | 
+2022-06-08T13:42:12.847Z - [info] Executing:  | XType | Test Program |  | 
+2022-06-08T13:42:13.484Z - [info] Executing:  | click | css=button[data-cy="modal-create-program-submit"] |  | 
+2022-06-08T13:42:14.354Z - [info] Executing:  | visualVerify | editprogram_dpi_96.png |  | 
+2022-06-08T13:42:15.408Z - [info] Macro completed (Runtime 4.69s)
+2022-06-08T13:42:15.485Z - [status] Playing macro 4. Toevoegen oefeningen met startgewichten
+2022-06-08T13:42:15.509Z - [info] Executing:  | echo | BEWEEG DE MUIS NIET! De gewichten moeten aan het eind van dit script aangepast zijn aan de hand van weights.csv! |  | 
+2022-06-08T13:42:15.514Z - [echo] BEWEEG DE MUIS NIET! De gewichten moeten aan het eind van dit script aangepast zijn aan de hand van weights.csv!
+2022-06-08T13:42:15.832Z - [info] Executing:  | csvRead | exercises.csv |  | 
+2022-06-08T13:42:16.174Z - [info] Executing:  | while_v2 | ${!csvReadStatus} == "OK" |  | 
+2022-06-08T13:42:16.512Z - [info] Executing:  | executeScript_Sandbox | return Number(${!csvReadLineNumber})+1 | !csvReadLineNumber | 
+2022-06-08T13:42:16.859Z - [info] Executing:  | echo | Aanmaak oefening ${!COL1} met startgewicht ${!COL2} |  | 
+2022-06-08T13:42:16.864Z - [echo] Aanmaak oefening squat met startgewicht 50
+2022-06-08T13:42:17.175Z - [info] Executing:  | click | css=section[data-cy="menu-item-add-exercise"] |  | 
+2022-06-08T13:42:18.121Z - [info] Executing:  | click | css=button[data-cy="select-exercise"] |  | 
+2022-06-08T13:42:19.014Z - [info] Executing:  | click | css=section[data-cy="menu-item-${!COL1}"] |  | 
+2022-06-08T13:42:19.891Z - [info] Executing:  | XClick | css=input[data-cy="weight-input"] |  | 
+2022-06-08T13:42:20.619Z - [info] Executing:  | XType | ${KEY_BKSP}${KEY_BKSP}${!COL2} |  | 
+2022-06-08T13:42:21.262Z - [info] Executing:  | XClick | css=button.undefined[kind="green"] |  | 
+2022-06-08T13:42:21.928Z - [info] Executing:  | store | true | !errorIgnore | 
+2022-06-08T13:42:22.256Z - [info] Executing:  | csvRead | exercises.csv |  | 
+2022-06-08T13:42:22.612Z - [info] Executing:  | store | false | !errorIgnore | 
+2022-06-08T13:42:22.937Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:42:23.264Z - [info] Executing:  | while_v2 | ${!csvReadStatus} == "OK" |  | 
+2022-06-08T13:42:23.593Z - [info] Executing:  | executeScript_Sandbox | return Number(${!csvReadLineNumber})+1 | !csvReadLineNumber | 
+2022-06-08T13:42:23.923Z - [info] Executing:  | echo | Aanmaak oefening ${!COL1} met startgewicht ${!COL2} |  | 
+2022-06-08T13:42:23.929Z - [echo] Aanmaak oefening bench-press met startgewicht 35
+2022-06-08T13:42:24.240Z - [info] Executing:  | click | css=section[data-cy="menu-item-add-exercise"] |  | 
+2022-06-08T13:42:25.135Z - [info] Executing:  | click | css=button[data-cy="select-exercise"] |  | 
+2022-06-08T13:42:26.013Z - [info] Executing:  | click | css=section[data-cy="menu-item-${!COL1}"] |  | 
+2022-06-08T13:42:26.882Z - [info] Executing:  | XClick | css=input[data-cy="weight-input"] |  | 
+2022-06-08T13:42:27.566Z - [info] Executing:  | XType | ${KEY_BKSP}${KEY_BKSP}${!COL2} |  | 
+2022-06-08T13:42:28.203Z - [info] Executing:  | XClick | css=button.undefined[kind="green"] |  | 
+2022-06-08T13:42:28.872Z - [info] Executing:  | store | true | !errorIgnore | 
+2022-06-08T13:42:29.194Z - [info] Executing:  | csvRead | exercises.csv |  | 
+2022-06-08T13:42:29.556Z - [info] Executing:  | store | false | !errorIgnore | 
+2022-06-08T13:42:29.871Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:42:30.192Z - [info] Executing:  | while_v2 | ${!csvReadStatus} == "OK" |  | 
+2022-06-08T13:42:30.528Z - [info] Executing:  | executeScript_Sandbox | return Number(${!csvReadLineNumber})+1 | !csvReadLineNumber | 
+2022-06-08T13:42:30.857Z - [info] Executing:  | echo | Aanmaak oefening ${!COL1} met startgewicht ${!COL2} |  | 
+2022-06-08T13:42:30.862Z - [echo] Aanmaak oefening deadlift met startgewicht 60
+2022-06-08T13:42:31.173Z - [info] Executing:  | click | css=section[data-cy="menu-item-add-exercise"] |  | 
+2022-06-08T13:42:32.050Z - [info] Executing:  | click | css=button[data-cy="select-exercise"] |  | 
+2022-06-08T13:42:32.942Z - [info] Executing:  | click | css=section[data-cy="menu-item-${!COL1}"] |  | 
+2022-06-08T13:42:33.806Z - [info] Executing:  | XClick | css=input[data-cy="weight-input"] |  | 
+2022-06-08T13:42:34.496Z - [info] Executing:  | XType | ${KEY_BKSP}${KEY_BKSP}${!COL2} |  | 
+2022-06-08T13:42:35.132Z - [info] Executing:  | XClick | css=button.undefined[kind="green"] |  | 
+2022-06-08T13:42:35.815Z - [info] Executing:  | store | true | !errorIgnore | 
+2022-06-08T13:42:36.144Z - [info] Executing:  | csvRead | exercises.csv |  | 
+2022-06-08T13:42:36.187Z - [error][ignored] end of csv file reached
+2022-06-08T13:42:36.518Z - [info] Executing:  | store | false | !errorIgnore | 
+2022-06-08T13:42:36.835Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:42:37.162Z - [info] Executing:  | while_v2 | ${!csvReadStatus} == "OK" |  | 
+2022-06-08T13:42:37.490Z - [info] Executing:  | visualVerify | exercises_dpi_96.png |  | 
+2022-06-08T13:42:38.390Z - [info] Executing:  | executeScript_Sandbox | return 1; | !csvReadLineNumber | 
+2022-06-08T13:42:38.727Z - [info] Macro completed (Runtime 23.23s)
+2022-06-08T13:42:38.806Z - [status] Playing macro 5. Instellen trainingsdagen
+2022-06-08T13:42:38.833Z - [info] Executing:  | echo | BEWEEG DE MUIS NIET! |  | 
+2022-06-08T13:42:38.839Z - [echo] BEWEEG DE MUIS NIET!
+2022-06-08T13:42:39.158Z - [info] Executing:  | echo | NOTE: Ik gebruik hier een andere manier om over de csv data te itereren omdat ik deze manier compacter/duidelijker vind |  | 
+2022-06-08T13:42:39.164Z - [echo] NOTE: Ik gebruik hier een andere manier om over de csv data te itereren omdat ik deze manier compacter/duidelijker vind
+2022-06-08T13:42:39.484Z - [info] Executing:  | click | css=button[data-cy="edit-day"] |  | 
+2022-06-08T13:42:40.338Z - [info] Executing:  | csvReadArray | exercises-day1.csv | exercises | 
+2022-06-08T13:42:40.678Z - [info] Executing:  | executeScript_Sandbox | return ${exercises}.length; | numExercises | 
+2022-06-08T13:42:41.016Z - [info] Executing:  | times | ${numExercises} |  | 
+2022-06-08T13:42:41.344Z - [info] Executing:  | executeScript_Sandbox | return ${exercises}[${!times} - 1]; | exercise | 
+2022-06-08T13:42:41.671Z - [info] Executing:  | click | css=section[data-cy="menu-item-${exercise}"] |  | 
+2022-06-08T13:42:42.555Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:42:42.884Z - [info] Executing:  | times | ${numExercises} |  | 
+2022-06-08T13:42:43.209Z - [info] Executing:  | executeScript_Sandbox | return ${exercises}[${!times} - 1]; | exercise | 
+2022-06-08T13:42:43.540Z - [info] Executing:  | click | css=section[data-cy="menu-item-${exercise}"] |  | 
+2022-06-08T13:42:44.403Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:42:44.729Z - [info] Executing:  | times | ${numExercises} |  | 
+2022-06-08T13:42:45.045Z - [info] Executing:  | executeScript_Sandbox | return ${exercises}[${!times} - 1]; | exercise | 
+2022-06-08T13:42:45.383Z - [info] Executing:  | click | css=section[data-cy="menu-item-${exercise}"] |  | 
+2022-06-08T13:42:46.243Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:42:46.567Z - [info] Executing:  | times | ${numExercises} |  | 
+2022-06-08T13:42:46.893Z - [info] Executing:  | visualVerify | day1_dpi_96.png |  | 
+2022-06-08T13:42:47.807Z - [info] Executing:  | click | css=button |  | 
+2022-06-08T13:42:48.672Z - [info] Executing:  | visualVerify | days_dpi_96.png |  | 
+2022-06-08T13:42:50.042Z - [info] Macro completed (Runtime 11.21s)
+2022-06-08T13:42:50.116Z - [status] Playing macro 6. Selecteren nieuw gemaakt programma
+2022-06-08T13:42:50.142Z - [info] Executing:  | click | css=button |  | 
+2022-06-08T13:42:51.008Z - [info] Executing:  | click | css=section[data-cy="menu-item-test-program"] |  | 
+2022-06-08T13:42:51.874Z - [info] Executing:  | visualVerify | program_part1_dpi_96.png |  | 
+2022-06-08T13:42:52.757Z - [info] Executing:  | visualVerify | program_part2_dpi_96.png |  | 
+2022-06-08T13:42:54.960Z - [info] Executing:  | visualVerify | program_part3_dpi_96.png |  | 
+2022-06-08T13:42:57.173Z - [info] Macro completed (Runtime 7.04s)
+2022-06-08T13:42:57.249Z - [status] Playing macro 7.1 Instellen beschikbare gewichten - verwijderen
+2022-06-08T13:42:57.278Z - [info] Executing:  | echo | BEWEEG DE MUIS NIET! |  | 
+2022-06-08T13:42:57.285Z - [echo] BEWEEG DE MUIS NIET!
+2022-06-08T13:42:57.600Z - [info] Executing:  | click | css=button[data-cy="footer-settings"] |  | 
+2022-06-08T13:42:58.487Z - [info] Executing:  | click | css=section[data-cy="menu-item-available-plates"] |  | 
+2022-06-08T13:42:59.377Z - [info] Executing:  | csvRead | plates-to-delete.csv |  | 
+2022-06-08T13:42:59.720Z - [info] Executing:  | while_v2 | ${!csvReadStatus} == "OK" |  | 
+2022-06-08T13:43:00.053Z - [info] Executing:  | executeScript_Sandbox | return Number(${!csvReadLineNumber})+1 | !csvReadLineNumber | 
+2022-06-08T13:43:00.385Z - [info] Executing:  | echo | ${!COL1} |  | 
+2022-06-08T13:43:00.392Z - [echo] 20
+2022-06-08T13:43:00.714Z - [info] Executing:  | click | css=button[data-cy="menu-item-delete-${!COL1}-kg"] |  | 
+2022-06-08T13:43:01.597Z - [info] Executing:  | store | true | !errorIgnore | 
+2022-06-08T13:43:01.923Z - [info] Executing:  | csvRead | plates-to-delete.csv |  | 
+2022-06-08T13:43:02.267Z - [info] Executing:  | store | false | !errorIgnore | 
+2022-06-08T13:43:02.584Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:43:02.904Z - [info] Executing:  | while_v2 | ${!csvReadStatus} == "OK" |  | 
+2022-06-08T13:43:03.230Z - [info] Executing:  | executeScript_Sandbox | return Number(${!csvReadLineNumber})+1 | !csvReadLineNumber | 
+2022-06-08T13:43:03.569Z - [info] Executing:  | echo | ${!COL1} |  | 
+2022-06-08T13:43:03.577Z - [echo] 10
+2022-06-08T13:43:03.893Z - [info] Executing:  | click | css=button[data-cy="menu-item-delete-${!COL1}-kg"] |  | 
+2022-06-08T13:43:04.762Z - [info] Executing:  | store | true | !errorIgnore | 
+2022-06-08T13:43:05.081Z - [info] Executing:  | csvRead | plates-to-delete.csv |  | 
+2022-06-08T13:43:05.423Z - [info] Executing:  | store | false | !errorIgnore | 
+2022-06-08T13:43:05.753Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:43:06.078Z - [info] Executing:  | while_v2 | ${!csvReadStatus} == "OK" |  | 
+2022-06-08T13:43:06.402Z - [info] Executing:  | executeScript_Sandbox | return Number(${!csvReadLineNumber})+1 | !csvReadLineNumber | 
+2022-06-08T13:43:06.727Z - [info] Executing:  | echo | ${!COL1} |  | 
+2022-06-08T13:43:06.735Z - [echo] 5
+2022-06-08T13:43:07.054Z - [info] Executing:  | click | css=button[data-cy="menu-item-delete-${!COL1}-kg"] |  | 
+2022-06-08T13:43:07.928Z - [info] Executing:  | store | true | !errorIgnore | 
+2022-06-08T13:43:08.253Z - [info] Executing:  | csvRead | plates-to-delete.csv |  | 
+2022-06-08T13:43:08.608Z - [info] Executing:  | store | false | !errorIgnore | 
+2022-06-08T13:43:08.926Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:43:09.242Z - [info] Executing:  | while_v2 | ${!csvReadStatus} == "OK" |  | 
+2022-06-08T13:43:09.576Z - [info] Executing:  | executeScript_Sandbox | return Number(${!csvReadLineNumber})+1 | !csvReadLineNumber | 
+2022-06-08T13:43:09.905Z - [info] Executing:  | echo | ${!COL1} |  | 
+2022-06-08T13:43:09.913Z - [echo] 2.5
+2022-06-08T13:43:10.231Z - [info] Executing:  | click | css=button[data-cy="menu-item-delete-${!COL1}-kg"] |  | 
+2022-06-08T13:43:11.091Z - [info] Executing:  | store | true | !errorIgnore | 
+2022-06-08T13:43:11.418Z - [info] Executing:  | csvRead | plates-to-delete.csv |  | 
+2022-06-08T13:43:11.762Z - [info] Executing:  | store | false | !errorIgnore | 
+2022-06-08T13:43:12.090Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:43:12.408Z - [info] Executing:  | while_v2 | ${!csvReadStatus} == "OK" |  | 
+2022-06-08T13:43:12.732Z - [info] Executing:  | executeScript_Sandbox | return Number(${!csvReadLineNumber})+1 | !csvReadLineNumber | 
+2022-06-08T13:43:13.071Z - [info] Executing:  | echo | ${!COL1} |  | 
+2022-06-08T13:43:13.079Z - [echo] 1.25
+2022-06-08T13:43:13.400Z - [info] Executing:  | click | css=button[data-cy="menu-item-delete-${!COL1}-kg"] |  | 
+2022-06-08T13:43:14.272Z - [info] Executing:  | store | true | !errorIgnore | 
+2022-06-08T13:43:14.597Z - [info] Executing:  | csvRead | plates-to-delete.csv |  | 
+2022-06-08T13:43:14.953Z - [info] Executing:  | store | false | !errorIgnore | 
+2022-06-08T13:43:15.272Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:43:15.600Z - [info] Executing:  | while_v2 | ${!csvReadStatus} == "OK" |  | 
+2022-06-08T13:43:15.928Z - [info] Executing:  | executeScript_Sandbox | return Number(${!csvReadLineNumber})+1 | !csvReadLineNumber | 
+2022-06-08T13:43:16.256Z - [info] Executing:  | echo | ${!COL1} |  | 
+2022-06-08T13:43:16.266Z - [echo] 0.5
+2022-06-08T13:43:16.586Z - [info] Executing:  | click | css=button[data-cy="menu-item-delete-${!COL1}-kg"] |  | 
+2022-06-08T13:43:17.461Z - [info] Executing:  | store | true | !errorIgnore | 
+2022-06-08T13:43:17.790Z - [info] Executing:  | csvRead | plates-to-delete.csv |  | 
+2022-06-08T13:43:17.842Z - [error][ignored] end of csv file reached
+2022-06-08T13:43:18.168Z - [info] Executing:  | store | false | !errorIgnore | 
+2022-06-08T13:43:18.490Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:43:18.824Z - [info] Executing:  | while_v2 | ${!csvReadStatus} == "OK" |  | 
+2022-06-08T13:43:19.175Z - [info] Macro completed (Runtime 21.90s)
+2022-06-08T13:43:19.271Z - [status] Playing macro 7.2 Instellen beschikbare gewichten - toevoegen
+2022-06-08T13:43:19.304Z - [info] Executing:  | echo | BEWEEG DE MUIS NIET! |  | 
+2022-06-08T13:43:19.314Z - [echo] BEWEEG DE MUIS NIET!
+2022-06-08T13:43:19.639Z - [info] Executing:  | csvRead | plates-to-add.csv |  | 
+2022-06-08T13:43:19.990Z - [info] Executing:  | while_v2 | ${!csvReadStatus} == "OK" |  | 
+2022-06-08T13:43:20.331Z - [info] Executing:  | executeScript_Sandbox | return Number(${!csvReadLineNumber})+1 | !csvReadLineNumber | 
+2022-06-08T13:43:20.661Z - [info] Executing:  | XClick | css=button[kind="green"] |  | 
+2022-06-08T13:43:21.381Z - [info] Executing:  | XClick | css=form > input[type="number"] |  | 
+2022-06-08T13:43:22.081Z - [info] Executing:  | XType | ${KEY_BKSP}${KEY_BKSP}${!COL1} |  | 
+2022-06-08T13:43:22.734Z - [info] Executing:  | click | css=button.ls-add-plate |  | 
+2022-06-08T13:43:23.621Z - [info] Executing:  | XClick | css=input[data-cy="menu-item-value-${!COL1}-kg"] |  | 
+2022-06-08T13:43:24.316Z - [info] Executing:  | XType | ${KEY_DEL}${KEY_DEL}${!COL2} |  | 
+2022-06-08T13:43:24.956Z - [info] Executing:  | store | true | !errorIgnore | 
+2022-06-08T13:43:25.282Z - [info] Executing:  | csvRead | plates-to-add.csv |  | 
+2022-06-08T13:43:25.640Z - [info] Executing:  | store | false | !errorIgnore | 
+2022-06-08T13:43:25.960Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:43:26.294Z - [info] Executing:  | while_v2 | ${!csvReadStatus} == "OK" |  | 
+2022-06-08T13:43:26.633Z - [info] Executing:  | executeScript_Sandbox | return Number(${!csvReadLineNumber})+1 | !csvReadLineNumber | 
+2022-06-08T13:43:26.974Z - [info] Executing:  | XClick | css=button[kind="green"] |  | 
+2022-06-08T13:43:27.657Z - [info] Executing:  | XClick | css=form > input[type="number"] |  | 
+2022-06-08T13:43:28.339Z - [info] Executing:  | XType | ${KEY_BKSP}${KEY_BKSP}${!COL1} |  | 
+2022-06-08T13:43:28.976Z - [info] Executing:  | click | css=button.ls-add-plate |  | 
+2022-06-08T13:43:29.843Z - [info] Executing:  | XClick | css=input[data-cy="menu-item-value-${!COL1}-kg"] |  | 
+2022-06-08T13:43:30.534Z - [info] Executing:  | XType | ${KEY_DEL}${KEY_DEL}${!COL2} |  | 
+2022-06-08T13:43:31.175Z - [info] Executing:  | store | true | !errorIgnore | 
+2022-06-08T13:43:31.500Z - [info] Executing:  | csvRead | plates-to-add.csv |  | 
+2022-06-08T13:43:31.557Z - [error][ignored] end of csv file reached
+2022-06-08T13:43:31.877Z - [info] Executing:  | store | false | !errorIgnore | 
+2022-06-08T13:43:32.199Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:43:32.526Z - [info] Executing:  | while_v2 | ${!csvReadStatus} == "OK" |  | 
+2022-06-08T13:43:32.869Z - [info] Executing:  | visualVerify | platekgs_dpi_96.png |  | 
+2022-06-08T13:43:33.785Z - [info] Executing:  | visualVerify | platecounts_dpi_96.png |  | 
+2022-06-08T13:43:35.977Z - [info] Executing:  | click | css=button |  | 
+2022-06-08T13:43:36.850Z - [info] Executing:  | click | css=button[data-cy="back"] |  | 
+2022-06-08T13:43:37.722Z - [info] Executing:  | executeScript_Sandbox | return 1; | !csvReadLineNumber | 
+2022-06-08T13:43:38.096Z - [info] Macro completed (Runtime 18.80s)
+2022-06-08T13:43:38.187Z - [status] Playing macro 8. Uitvoeren eerste workout
+2022-06-08T13:43:38.226Z - [info] Executing:  | echo | BEWEEG DE MUIS NIET! |  | 
+2022-06-08T13:43:38.237Z - [echo] BEWEEG DE MUIS NIET!
+2022-06-08T13:43:38.564Z - [info] Executing:  | click | css=button.ls-start-workout |  | 
+2022-06-08T13:43:39.447Z - [info] Executing:  | store | 2 | !timeout_wait | 
+2022-06-08T13:43:39.769Z - [info] Executing:  | click | css=button.ls-close-help-overlay[kind="green"] |  | 
+2022-06-08T13:43:40.643Z - [info] Executing:  | executeScript | return document.querySelectorAll("button[data-cy='set-nonstarted']").length; | setCount | 
+2022-06-08T13:43:41.516Z - [info] Executing:  | times | ${setCount} |  | 
+2022-06-08T13:43:41.843Z - [info] Executing:  | store | true | !statusOK | 
+2022-06-08T13:43:42.175Z - [info] Executing:  | verifyElementPresent | css=button.ls-close-help-overlay[kind="green"] |  | 
+2022-06-08T13:43:43.256Z - [error][ignored] 'css=button.ls-close-help-overlay[kind="green"]' element not present
+2022-06-08T13:43:43.573Z - [info] Executing:  | if_v2 | ${!statusOK} == true |  | 
+2022-06-08T13:43:43.901Z - [info] Executing:  | click | css=button[data-cy="set-nonstarted"] |  | 
+2022-06-08T13:43:44.772Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:43:45.100Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:43:45.425Z - [info] Executing:  | times | ${setCount} |  | 
+2022-06-08T13:43:45.755Z - [info] Executing:  | store | true | !statusOK | 
+2022-06-08T13:43:46.083Z - [info] Executing:  | verifyElementPresent | css=button.ls-close-help-overlay[kind="green"] |  | 
+2022-06-08T13:43:47.165Z - [error][ignored] 'css=button.ls-close-help-overlay[kind="green"]' element not present
+2022-06-08T13:43:47.486Z - [info] Executing:  | if_v2 | ${!statusOK} == true |  | 
+2022-06-08T13:43:47.824Z - [info] Executing:  | click | css=button[data-cy="set-nonstarted"] |  | 
+2022-06-08T13:43:48.707Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:43:49.033Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:43:49.357Z - [info] Executing:  | times | ${setCount} |  | 
+2022-06-08T13:43:49.683Z - [info] Executing:  | store | true | !statusOK | 
+2022-06-08T13:43:50.009Z - [info] Executing:  | verifyElementPresent | css=button.ls-close-help-overlay[kind="green"] |  | 
+2022-06-08T13:43:51.102Z - [error][ignored] 'css=button.ls-close-help-overlay[kind="green"]' element not present
+2022-06-08T13:43:51.433Z - [info] Executing:  | if_v2 | ${!statusOK} == true |  | 
+2022-06-08T13:43:51.777Z - [info] Executing:  | click | css=button[data-cy="set-nonstarted"] |  | 
+2022-06-08T13:43:52.663Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:43:52.988Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:43:53.315Z - [info] Executing:  | times | ${setCount} |  | 
+2022-06-08T13:43:53.643Z - [info] Executing:  | store | true | !statusOK | 
+2022-06-08T13:43:53.969Z - [info] Executing:  | verifyElementPresent | css=button.ls-close-help-overlay[kind="green"] |  | 
+2022-06-08T13:43:55.061Z - [error][ignored] 'css=button.ls-close-help-overlay[kind="green"]' element not present
+2022-06-08T13:43:55.394Z - [info] Executing:  | if_v2 | ${!statusOK} == true |  | 
+2022-06-08T13:43:55.735Z - [info] Executing:  | click | css=button[data-cy="set-nonstarted"] |  | 
+2022-06-08T13:43:56.608Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:43:56.936Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:43:57.263Z - [info] Executing:  | times | ${setCount} |  | 
+2022-06-08T13:43:57.592Z - [info] Executing:  | store | true | !statusOK | 
+2022-06-08T13:43:57.916Z - [info] Executing:  | verifyElementPresent | css=button.ls-close-help-overlay[kind="green"] |  | 
+2022-06-08T13:43:58.996Z - [error][ignored] 'css=button.ls-close-help-overlay[kind="green"]' element not present
+2022-06-08T13:43:59.327Z - [info] Executing:  | if_v2 | ${!statusOK} == true |  | 
+2022-06-08T13:43:59.669Z - [info] Executing:  | click | css=button[data-cy="set-nonstarted"] |  | 
+2022-06-08T13:44:00.539Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:44:00.874Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:44:01.200Z - [info] Executing:  | times | ${setCount} |  | 
+2022-06-08T13:44:01.523Z - [info] Executing:  | store | true | !statusOK | 
+2022-06-08T13:44:01.854Z - [info] Executing:  | verifyElementPresent | css=button.ls-close-help-overlay[kind="green"] |  | 
+2022-06-08T13:44:02.932Z - [error][ignored] 'css=button.ls-close-help-overlay[kind="green"]' element not present
+2022-06-08T13:44:03.266Z - [info] Executing:  | if_v2 | ${!statusOK} == true |  | 
+2022-06-08T13:44:03.609Z - [info] Executing:  | click | css=button[data-cy="set-nonstarted"] |  | 
+2022-06-08T13:44:04.477Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:44:04.805Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:44:05.127Z - [info] Executing:  | times | ${setCount} |  | 
+2022-06-08T13:44:05.459Z - [info] Executing:  | store | true | !statusOK | 
+2022-06-08T13:44:05.785Z - [info] Executing:  | verifyElementPresent | css=button.ls-close-help-overlay[kind="green"] |  | 
+2022-06-08T13:44:06.863Z - [error][ignored] 'css=button.ls-close-help-overlay[kind="green"]' element not present
+2022-06-08T13:44:07.186Z - [info] Executing:  | if_v2 | ${!statusOK} == true |  | 
+2022-06-08T13:44:07.529Z - [info] Executing:  | click | css=button[data-cy="set-nonstarted"] |  | 
+2022-06-08T13:44:08.409Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:44:08.730Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:44:09.058Z - [info] Executing:  | times | ${setCount} |  | 
+2022-06-08T13:44:09.385Z - [info] Executing:  | store | true | !statusOK | 
+2022-06-08T13:44:09.712Z - [info] Executing:  | verifyElementPresent | css=button.ls-close-help-overlay[kind="green"] |  | 
+2022-06-08T13:44:10.782Z - [error][ignored] 'css=button.ls-close-help-overlay[kind="green"]' element not present
+2022-06-08T13:44:11.115Z - [info] Executing:  | if_v2 | ${!statusOK} == true |  | 
+2022-06-08T13:44:11.458Z - [info] Executing:  | click | css=button[data-cy="set-nonstarted"] |  | 
+2022-06-08T13:44:12.332Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:44:12.662Z - [info] Executing:  | end |  |  | 
+2022-06-08T13:44:12.990Z - [info] Executing:  | times | ${setCount} |  | 
+2022-06-08T13:44:13.319Z - [info] Executing:  | store | 10 | !timeout_wait | 
+2022-06-08T13:44:13.647Z - [info] Executing:  | XClick | css=button.ls-finish-workout |  | 
+2022-06-08T13:44:14.328Z - [info] Executing:  | visualVerify | personalrecords_dpi_96.png |  | 
+2022-06-08T13:44:15.270Z - [info] Macro completed (Runtime 37.05s)
+2022-06-08T13:44:15.507Z - [report] function render(_ref57) {
+        var renderText = _ref57.renderText;
+
+        return [_react2.default.createElement(
+          'span',
+          null,
+          lines.join('\n')
+        )].concat((0, _toConsumableArray3.default)(state.reports.map(function (r, i) {
+          return _react2.default.createElement(
+            'div',
+            null,
+            r.name,
+            '\xA0 (',
+            statusMap[r.stopReason],
+            r.stopReason === _player.Player.C.END_REASON.ERROR ? ': ' : '',
+            r.stopReason === _player.Player.C.END_REASON.ERROR ? renderText({ type: 'error', text: r.errMsg, stack: r.stack }) : null,
+            ', Runtime: ',
+            r.usedTime,
+            ')'
+          );
+        })));
+      }

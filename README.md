@@ -1,5 +1,6 @@
 # Automated-Web-UI-Tests-Practice
 
+Made by: Bart Hogenes  
 A repository that contains the test scripts that I made for practicing with the UI.Vision desktop automation software.
 
 ## How to run
